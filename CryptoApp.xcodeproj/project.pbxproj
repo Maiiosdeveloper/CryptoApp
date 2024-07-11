@@ -9,16 +9,20 @@
 /* Begin PBXBuildFile section */
 		2CA201F52C3B7C4C005BFD79 /* CryptoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA201F42C3B7C4C005BFD79 /* CryptoAppApp.swift */; };
 		2CA201F72C3B7C4C005BFD79 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA201F62C3B7C4C005BFD79 /* ContentView.swift */; };
-		2CA201F92C3B7C4F005BFD79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CA201F82C3B7C4F005BFD79 /* Assets.xcassets */; };
 		2CA201FC2C3B7C4F005BFD79 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CA201FB2C3B7C4F005BFD79 /* Preview Assets.xcassets */; };
+		2CEEB7422C3F6C2A0004C026 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CEEB7412C3F6C2A0004C026 /* Assets.xcassets */; };
+		2CEEB7442C3F6C830004C026 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CEEB7432C3F6C830004C026 /* Colors.xcassets */; };
+		2CEEB7472C3F72080004C026 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEEB7462C3F72080004C026 /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2CA201F12C3B7C4C005BFD79 /* CryptoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CA201F42C3B7C4C005BFD79 /* CryptoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoAppApp.swift; sourceTree = "<group>"; };
 		2CA201F62C3B7C4C005BFD79 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		2CA201F82C3B7C4F005BFD79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CA201FB2C3B7C4F005BFD79 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2CEEB7412C3F6C2A0004C026 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../Downloads/Resources/Assets.xcassets; sourceTree = "<group>"; };
+		2CEEB7432C3F6C830004C026 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		2CEEB7462C3F72080004C026 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +55,11 @@
 		2CA201F32C3B7C4C005BFD79 /* CryptoApp */ = {
 			isa = PBXGroup;
 			children = (
+				2CEEB7452C3F71F30004C026 /* Extension */,
 				2CA201F42C3B7C4C005BFD79 /* CryptoAppApp.swift */,
 				2CA201F62C3B7C4C005BFD79 /* ContentView.swift */,
-				2CA201F82C3B7C4F005BFD79 /* Assets.xcassets */,
+				2CEEB7412C3F6C2A0004C026 /* Assets.xcassets */,
+				2CEEB7432C3F6C830004C026 /* Colors.xcassets */,
 				2CA201FA2C3B7C4F005BFD79 /* Preview Content */,
 			);
 			path = CryptoApp;
@@ -65,6 +71,14 @@
 				2CA201FB2C3B7C4F005BFD79 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2CEEB7452C3F71F30004C026 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2CEEB7462C3F72080004C026 /* Color.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,8 +139,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CEEB7442C3F6C830004C026 /* Colors.xcassets in Resources */,
 				2CA201FC2C3B7C4F005BFD79 /* Preview Assets.xcassets in Resources */,
-				2CA201F92C3B7C4F005BFD79 /* Assets.xcassets in Resources */,
+				2CEEB7422C3F6C2A0004C026 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +154,7 @@
 			files = (
 				2CA201F72C3B7C4C005BFD79 /* ContentView.swift in Sources */,
 				2CA201F52C3B7C4C005BFD79 /* CryptoAppApp.swift in Sources */,
+				2CEEB7472C3F72080004C026 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
