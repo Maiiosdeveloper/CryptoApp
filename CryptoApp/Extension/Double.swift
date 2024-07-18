@@ -19,7 +19,7 @@ extension Double {
         //formatter.currencyCode = "usd" // usd is default
         //formatter.currencySymbol = "$" // $ is default
         formatter.minimumFractionDigits = 2
-        formatter.maximumFractionDigits = 6
+        formatter.maximumFractionDigits = 2
         
         return formatter
     }

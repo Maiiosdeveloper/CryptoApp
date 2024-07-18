@@ -37,6 +37,9 @@ extension CoinRowView {
             Text("\(model.symbol?.uppercased() ?? "")")
                 .font(.headline)
                 .foregroundStyle(Color.theme.accent)
+                
+                
+                
         }
     }
     private var centerColummn: some View {
@@ -55,6 +58,6 @@ extension CoinRowView {
             Text((model.quote?.usd?.percentChange24H ?? 0).addPercentage)
                 .foregroundStyle((model.quote?.usd?.percentChange24H ?? 0) >= 0 ? Color.theme.green : Color.theme.red)
         }
-        .frame(width: UIScreen.main.bounds.width/2.5, alignment: .trailing)
+        .frame(width: UIScreen.main.bounds.width/3.5, alignment: .trailing)
     }
 }

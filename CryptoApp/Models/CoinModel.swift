@@ -130,7 +130,7 @@ struct CoinModel: Identifiable, Codable {
 }
 
 // MARK: - Quote
-struct Quote: Codable {
+struct Quote:  Codable {
     let usd: Usd?
     enum CodingKeys: String, CodingKey {
         case usd = "USD"
@@ -138,7 +138,7 @@ struct Quote: Codable {
 }
 
 // MARK: - Usd
-struct Usd: Codable {
+struct Usd:  Codable {
     let price, volume24H, volumeChange24H, percentChange1H: Double?
     let percentChange24H, percentChange7D, percentChange30D, percentChange60D: Double?
     let percentChange90D, marketCap, marketCapDominance, fullyDilutedMarketCap: Double?
