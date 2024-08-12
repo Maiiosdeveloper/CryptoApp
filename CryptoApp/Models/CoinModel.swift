@@ -82,7 +82,26 @@ import Foundation
          }
  
  */
- 
+// MARK: - CoinModelFullResponse
+struct CoinModelFullResponse: Codable {
+    let status: Status
+    let data: [CoinModel]
+}
+// MARK: - Status
+struct Status: Codable {
+    let timestamp: String
+    let errorCode: Int
+    let elapsed, creditCount: Int
+    let totalCount: Int
+
+    enum CodingKeys: String, CodingKey {
+        case timestamp
+        case errorCode = "error_code"
+        case elapsed
+        case creditCount = "credit_count"
+        case totalCount = "total_count"
+    }
+}
 // MARK: - CoinModel
 struct CoinModel: Identifiable, Codable {
     let id: Int
@@ -90,7 +109,7 @@ struct CoinModel: Identifiable, Codable {
     let numMarketPairs: Int?
     let dateAdded: String?
     let tags: [String]?
-    let maxSupply, circulatingSupply, totalSupply: Int?
+    let maxSupply, circulatingSupply, totalSupply: Double?
     let infiniteSupply: Bool?
     // let platform: NSNull?
     let cmcRank: Int?
