@@ -33,7 +33,7 @@ extension CoinRowView {
                 .font(.caption)
                 .foregroundStyle(Color.theme.secondaryTextColor)
                 .frame(minWidth: 30)
-            Circle().frame(width: 30, height: 30)
+            CoinImageView(viewModel: .init(id: "\(model.id)")).frame(width: 30, height: 30)
             Text("\(model.symbol?.uppercased() ?? "")")
                 .font(.headline)
                 .foregroundStyle(Color.theme.accent)
