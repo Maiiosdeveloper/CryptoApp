@@ -15,10 +15,17 @@ import SwiftUI
 /*
     this class to add all data we use in previews for swiftui views
  */
+
 class DeveloperPreview {
+    
+    
     static let instance = DeveloperPreview()
     // to ensure no one can create another instances just one
     private init() { }
+    
+    let statistic1 = StatisticModel(title: "Market Coin", value: "$15Bn", percentageChange: 45)
+    let statistic2 = StatisticModel(title: "Total Value", value: "$50Tr", percentageChange: 0)
+    let statistic3 = StatisticModel(title: "Profile Value", value: "$150.0K", percentageChange: -15)
     
     let coinModel: CoinModel = .init(id: 1, name: "Bitcoin", symbol: "BTC", slug: "bitcoin", numMarketPairs: 11597, dateAdded: "2010-07-13T00:00:00.000Z", tags: [
         "mineable",
