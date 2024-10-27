@@ -92,14 +92,11 @@ struct Status: Codable {
     let timestamp: String
     let errorCode: Int
     let elapsed, creditCount: Int
-    let totalCount: Int
-
     enum CodingKeys: String, CodingKey {
         case timestamp
         case errorCode = "error_code"
         case elapsed
         case creditCount = "credit_count"
-        case totalCount = "total_count"
     }
 }
 // MARK: - CoinModel
@@ -163,6 +160,13 @@ struct Usd:  Codable {
     let percentChange90D, marketCap, marketCapDominance, fullyDilutedMarketCap: Double?
     // let tvl: NSNull?
     let lastUpdated: String?
+    
+    let totalMarketCap, totalVolume24H, totalVolume24HReported, altcoinVolume24H: Double?
+    let altcoinVolume24HReported, altcoinMarketCap, defiVolume24H, defiVolume24HReported: Double?
+    let defi24HPercentageChange, defiMarketCap, stablecoinVolume24H, stablecoinVolume24HReported: Double?
+    let stablecoin24HPercentageChange, stablecoinMarketCap, derivativesVolume24H, derivativesVolume24HReported: Double?
+    let derivatives24HPercentageChange, totalMarketCapYesterday, totalVolume24HYesterday, totalMarketCapYesterdayPercentageChange: Double?
+    let totalVolume24HYesterdayPercentageChange: Double?
     enum CodingKeys: String, CodingKey {
         case price
         case volume24H = "volume_24h"
@@ -178,5 +182,63 @@ struct Usd:  Codable {
         case fullyDilutedMarketCap = "fully_diluted_market_cap"
         // case tvl
         case lastUpdated = "last_updated"
+        
+        case totalMarketCap = "total_market_cap"
+        case totalVolume24H = "total_volume_24h"
+        case totalVolume24HReported = "total_volume_24h_reported"
+        case altcoinVolume24H = "altcoin_volume_24h"
+        case altcoinVolume24HReported = "altcoin_volume_24h_reported"
+        case altcoinMarketCap = "altcoin_market_cap"
+        case defiVolume24H = "defi_volume_24h"
+        case defiVolume24HReported = "defi_volume_24h_reported"
+        case defi24HPercentageChange = "defi_24h_percentage_change"
+        case defiMarketCap = "defi_market_cap"
+        case stablecoinVolume24H = "stablecoin_volume_24h"
+        case stablecoinVolume24HReported = "stablecoin_volume_24h_reported"
+        case stablecoin24HPercentageChange = "stablecoin_24h_percentage_change"
+        case stablecoinMarketCap = "stablecoin_market_cap"
+        case derivativesVolume24H = "derivatives_volume_24h"
+        case derivativesVolume24HReported = "derivatives_volume_24h_reported"
+        case derivatives24HPercentageChange = "derivatives_24h_percentage_change"
+        case totalMarketCapYesterday = "total_market_cap_yesterday"
+        case totalVolume24HYesterday = "total_volume_24h_yesterday"
+        case totalMarketCapYesterdayPercentageChange = "total_market_cap_yesterday_percentage_change"
+        case totalVolume24HYesterdayPercentageChange = "total_volume_24h_yesterday_percentage_change"
+    }
+    init(price: Double?, volume24H: Double?, volumeChange24H: Double?, percentChange1H: Double?, percentChange24H: Double?, percentChange7D: Double?, percentChange30D: Double?, percentChange60D: Double?, percentChange90D: Double?, marketCap: Double?, marketCapDominance: Double?, fullyDilutedMarketCap: Double?, lastUpdated: String?, totalMarketCap: Double? = nil, totalVolume24H: Double? = nil, totalVolume24HReported: Double? = nil, altcoinVolume24H: Double? = nil, altcoinVolume24HReported: Double? = nil, altcoinMarketCap: Double? = nil, defiVolume24H: Double? = nil, defiVolume24HReported: Double? = nil, defi24HPercentageChange: Double? = nil, defiMarketCap: Double? = nil, stablecoinVolume24H: Double? = nil, stablecoinVolume24HReported: Double? = nil, stablecoin24HPercentageChange: Double? = nil, stablecoinMarketCap: Double? = nil, derivativesVolume24H: Double? = nil, derivativesVolume24HReported: Double? = nil, derivatives24HPercentageChange: Double? = nil, totalMarketCapYesterday: Double? = nil, totalVolume24HYesterday: Double? = nil, totalMarketCapYesterdayPercentageChange: Double? = nil, totalVolume24HYesterdayPercentageChange: Double? = nil) {
+        self.price = price
+        self.volume24H = volume24H
+        self.volumeChange24H = volumeChange24H
+        self.percentChange1H = percentChange1H
+        self.percentChange24H = percentChange24H
+        self.percentChange7D = percentChange7D
+        self.percentChange30D = percentChange30D
+        self.percentChange60D = percentChange60D
+        self.percentChange90D = percentChange90D
+        self.marketCap = marketCap
+        self.marketCapDominance = marketCapDominance
+        self.fullyDilutedMarketCap = fullyDilutedMarketCap
+        self.lastUpdated = lastUpdated
+        self.totalMarketCap = totalMarketCap
+        self.totalVolume24H = totalVolume24H
+        self.totalVolume24HReported = totalVolume24HReported
+        self.altcoinVolume24H = altcoinVolume24H
+        self.altcoinVolume24HReported = altcoinVolume24HReported
+        self.altcoinMarketCap = altcoinMarketCap
+        self.defiVolume24H = defiVolume24H
+        self.defiVolume24HReported = defiVolume24HReported
+        self.defi24HPercentageChange = defi24HPercentageChange
+        self.defiMarketCap = defiMarketCap
+        self.stablecoinVolume24H = stablecoinVolume24H
+        self.stablecoinVolume24HReported = stablecoinVolume24HReported
+        self.stablecoin24HPercentageChange = stablecoin24HPercentageChange
+        self.stablecoinMarketCap = stablecoinMarketCap
+        self.derivativesVolume24H = derivativesVolume24H
+        self.derivativesVolume24HReported = derivativesVolume24HReported
+        self.derivatives24HPercentageChange = derivatives24HPercentageChange
+        self.totalMarketCapYesterday = totalMarketCapYesterday
+        self.totalVolume24HYesterday = totalVolume24HYesterday
+        self.totalMarketCapYesterdayPercentageChange = totalMarketCapYesterdayPercentageChange
+        self.totalVolume24HYesterdayPercentageChange = totalVolume24HYesterdayPercentageChange
     }
 }

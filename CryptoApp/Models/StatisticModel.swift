@@ -10,7 +10,7 @@ struct StatisticModel: Identifiable {
     let id: String = UUID().uuidString
     let title: String
     let value: String
-    let percentageChange: Double
+    let percentageChange: Double?
     init(title: String, value: String, percentageChange: Double) {
         self.title = title
         self.value = value
