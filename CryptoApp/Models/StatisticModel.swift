@@ -19,7 +19,7 @@ struct StatisticModel: Identifiable {
     init(title: String, value: String) {
         self.title = title
         self.value = value
-        self.percentageChange = 0
+        self.percentageChange = nil
     }
 }
 

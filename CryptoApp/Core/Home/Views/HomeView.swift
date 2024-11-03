@@ -8,19 +8,26 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var showPortfolio: Bool = false
+    @State private var showPortfolio: Bool = false //animate right
+    @State private var showPortfolioView: Bool = false //new sheet
     @StateObject private var viewModel: HomeViewModel = .init()
     var body: some View {
         ZStack {
             // background layer
             Color.theme.background
                 .ignoresSafeArea()
+            /* when creating new sheet we create new enviroment
+             if we have enviroment object in home view and want that in sheet view we manually add it to thhe new enviroment object in sheet view
+             */
+                .sheet(isPresented: $showPortfolioView) {
+                    PortfolioView( viewModel: viewModel)
+                }
             // content layer
             VStack {
                 homeHeader
-                //columnsTitles
                 HomeStatisticView( vm: viewModel, showPortfolio: $showPortfolio)
                 SearchBarView(text: $viewModel.searchText)
+                columnsTitles
                 if !showPortfolio {
                     allCoinsList
                         .transition(.move(edge: .leading))
@@ -50,6 +57,11 @@ extension HomeView {
             CircleButtonView(iconName: showPortfolio ? "plus":"info")
             .background {
                 CircleButtonAnimationView(animate: $showPortfolio)
+            }
+            .onTapGesture {
+                if showPortfolio {
+                    showPortfolioView.toggle()
+                }
             }
             Spacer()
             Text(showPortfolio ? "Portfolio" : "Live Prices")

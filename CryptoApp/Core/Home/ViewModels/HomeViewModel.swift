@@ -53,7 +53,8 @@ class HomeViewModel: ObservableObject {
     private func mapGlobalMarketData(data: MarketDataModel?) -> [StatisticModel] {
         var statistics: [StatisticModel] = []
         guard let data else { return statistics }
-        let marketCap = StatisticModel(title: "Market Cap", value: data.marketCap, percentageChange: data.quote?.usd?.stablecoin24HPercentageChange ?? 0)
+        let marketCap = StatisticModel(title: "Market Cap", value: data.marketCap, percentageChange: data.quote?.usd?.totalMarketCapYesterdayPercentageChange
+                                       ?? 0)
         let volume = StatisticModel(title: "24h Volume", value: data.volume)
         let btcDominance = StatisticModel(title: "BTC Dominance", value: data.btcDominancePercentage)
         let portfolio = StatisticModel(title: "Portfolio Value", value: "$0.00", percentageChange: 0)
