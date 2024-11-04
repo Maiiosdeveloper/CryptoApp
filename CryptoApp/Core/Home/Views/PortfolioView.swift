@@ -12,6 +12,7 @@ struct PortfolioView: View {
     @ObservedObject var viewModel: HomeViewModel
     @State private var selectedCoin: CoinModel? = nil
     @State private var amount: String = ""
+    @State private var savedSuccess: Bool = false
     var body: some View {
         NavigationView {
             ScrollView {
@@ -25,15 +26,20 @@ struct PortfolioView: View {
                 })
                 
             }
+            .onChange(of: viewModel.searchText, { oldValue, newValue in
+                if newValue.isEmpty {
+                    selectedCoin = nil
+                }
+            })
             .navigationTitle("Edit Portfolio")
             .toolbar{
                 ToolbarItem(placement: .topBarLeading) {
                     XMarkButton(dismiss: _dismiss)
                 }
-                if !amount.isEmpty {
+                if !amount.isEmpty && !savedSuccess {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button(action: {
-                            print("------")
+                            saveeButtonPressed()
                         }, label: {
                             trailingNavSaveButton
                         })
@@ -57,7 +63,8 @@ extension PortfolioView {
                             }
                             .onTapGesture {
                                 withAnimation(.easeInOut) {
-                                    selectedCoin = coin
+                                    selectedCoinTapped(coin: coin)
+                                    
                                 }
                             }
                         
@@ -67,6 +74,17 @@ extension PortfolioView {
             
         }
         .scrollIndicators(.hidden)
+    }
+    private func selectedCoinTapped(coin: CoinModel) {
+        selectedCoin = coin
+        let portfolioCoin = viewModel.portfolioCoins.first { $0.id == coin.id
+        }
+        if let portfolioCoin {
+            amount = "\(portfolioCoin.currentHoldings ?? 0)"
+        }else {
+            amount = ""
+        }
+        
     }
     private func getCurrentValue() -> String {
         ((Double(amount) ?? 0)*(selectedCoin?.quote?.usd?.price ?? 0)).addCurrency
@@ -107,7 +125,10 @@ extension PortfolioView {
     }
     private func saveeButtonPressed() {
         guard let selectedCoin else { return }
+        viewModel.updatePortfolio(coin: selectedCoin, amount: Double(amount) ?? 0)
         removeSelectedCoin()
+        savedSuccess = true
+        dismiss()
     }
     private func removeSelectedCoin() {
         selectedCoin = nil

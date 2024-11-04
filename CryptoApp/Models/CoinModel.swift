@@ -100,7 +100,11 @@ struct Status: Codable {
     }
 }
 // MARK: - CoinModel
-struct CoinModel: Identifiable, Codable {
+struct CoinModel: Identifiable, Codable, Equatable {
+    static func == (lhs: CoinModel, rhs: CoinModel) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     let id: Int
     let name, symbol, slug: String?
     let numMarketPairs: Int?
@@ -140,6 +144,7 @@ struct CoinModel: Identifiable, Codable {
     var rank: Int {
         cmcRank ?? 0
     }
+    
     func updateHoldings(amount: Double) -> CoinModel {
         return CoinModel(id: id, name: name, symbol: symbol, slug: slug, numMarketPairs: numMarketPairs, dateAdded: dateAdded, tags: tags, maxSupply: maxSupply, circulatingSupply: circulatingSupply, totalSupply: totalSupply, infiniteSupply: infiniteSupply, cmcRank: cmcRank, lastUpdated: lastUpdated, quote: quote, currentHoldings: amount)
     }
