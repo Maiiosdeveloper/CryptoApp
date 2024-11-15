@@ -29,8 +29,11 @@ struct HomeView: View {
                 SearchBarView(text: $viewModel.searchText)
                 columnsTitles
                 if !showPortfolio {
-                    allCoinsList
-                        .transition(.move(edge: .leading))
+                    if !viewModel.isLoading {
+                        allCoinsList
+                            .transition(.move(edge: .leading))
+                    }
+                    
                 }
                 if showPortfolio {
                     PortfolioCoinsList
@@ -90,6 +93,15 @@ extension HomeView {
             }
             Text("Price")
                 .frame(width: UIScreen.main.bounds.width/3.5, alignment: .trailing)
+            Button {
+                withAnimation(.linear(duration: 1)) {
+                    viewModel.reloadData()
+                }
+            } label: {
+                Image(systemName: "goforward")
+            }
+            .rotationEffect(Angle(degrees: viewModel.isLoading ? 360:0), anchor: .center)
+
         }
         .font(.caption)
         .foregroundStyle(Color.theme.secondaryTextColor)

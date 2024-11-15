@@ -14,7 +14,7 @@ class MarketDataService: ObservableObject {
     init() {
         getMarketData()
     }
-    private func getMarketData() {
+    func getMarketData() {
         guard let url = URL(string: "https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"

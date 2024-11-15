@@ -14,7 +14,7 @@ class CoinDataService: ObservableObject {
     init() {
         getCoins()
     }
-    private func getCoins() {
+    func getCoins() {
         guard let url = URL(string: "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?start=1&limit=20&convert=USD") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
